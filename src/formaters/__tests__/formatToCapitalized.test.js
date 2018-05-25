@@ -7,9 +7,10 @@ describe('Capitalize word Formatter', () => {
     expect(() => formatToCapitalized('abc')).not.toThrowError(TypeError)
   })
 
-  test('should format given string', () => {
+  test('should return the formatted parameter text', () => {
     expect(formatToCapitalized('ASDFG')).toBe('Asdfg')
     expect(formatToCapitalized('ASDFG ASDFG')).toBe('Asdfg Asdfg')
     expect(formatToCapitalized('asdfg asdfg')).toBe('asdfg asdfg')
+    expect(formatToCapitalized('aSdFg AsdfG')).toBe('aSdFg AsdfG')
   })
 })
