@@ -6,6 +6,7 @@ import isValidLicensePlate from './isValidLicensePlate'
 import isValidCPECUI from './isValidCPECUI'
 import isValidCurrency from './isValidCurrency'
 import isValidHoliday from './isValidHoliday'
+import isValidDomain from './isValidDomain'
 
 export {
   isValidPostalCode,
@@ -15,5 +16,6 @@ export {
   isValidLicensePlate,
   isValidCPECUI,
   isValidCurrency,
-  isValidHoliday
+  isValidHoliday,
+  isValidDomain
 }
