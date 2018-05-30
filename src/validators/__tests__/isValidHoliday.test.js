@@ -25,6 +25,7 @@ describe('Holiday validator', () => {
     expect(isValidHoliday(new Date(1805, 3, 21))).toBe(true)
     expect(isValidHoliday(new Date(2049, 3, 18))).toBe(true)
     expect(isValidHoliday(new Date(2076, 3, 19))).toBe(true)
+    expect(isValidHoliday(new Date(1699, 3, 19))).toBe(true)
   })
 
   test("Returns the name of the holiday on holidays' dates if feedback parameter is true", () => {
