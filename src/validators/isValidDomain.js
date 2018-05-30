@@ -10,6 +10,7 @@ import 'core-js/modules/es6.array.find'
  *  .EDU.PT
  *  .COM.PT
  **/
+const VALID_SUBDOMAINS = ['gov', 'edu', 'com']
 
 function getUrlHostname(url) {
   return url
@@ -18,7 +19,7 @@ function getUrlHostname(url) {
     .find(part => part.indexOf('.') != -1)
 }
 
-function validateDomain(url) {
+function validateDomain(url, validateSubdomain) {
   const parsed = getUrlHostname(url.toLowerCase())
 
   const split = parsed.split('.')
@@ -26,22 +27,15 @@ function validateDomain(url) {
 
   if (split[len - 1] && split[len - 1] !== 'pt') {
     return false
+  } else if (validateSubdomain) {
+    return !!(split[len - 2] && VALID_SUBDOMAINS.indexOf(split[len - 2]) > -1)
   }
-  /*
-  else if (split[len - 2]) {
-    const found = DOMAINS
-      .filter(d => d != 'pt')
-      .find(d => d === split[len - 2])
-    return !!found
-  }
-*/
+
   return true
 }
 
-export default function isValidDomain(url) {
+export default function isValidDomain(url, validateSubdomain = false) {
   if (typeof url != 'string') return false
 
-  const domain = validateDomain(url)
-
-  return validateDomain(url)
+  return validateDomain(url, validateSubdomain)
 }

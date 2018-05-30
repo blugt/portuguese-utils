@@ -8,6 +8,7 @@ describe('Domain validator', () => {
 
   test('Returns true for successful domain match in url parameter', () => {
     expect(isValidDomain('google.pt')).toBe(true)
+    expect(isValidDomain('google.gov.pt', true)).toBe(true)
     expect(isValidDomain('www.google.com.pt')).toBe(true)
     expect(isValidDomain('http://www.google.com.pt')).toBe(true)
     expect(isValidDomain('http://www.google.com.pt/this/is/a/path')).toBe(true)
@@ -19,6 +20,7 @@ describe('Domain validator', () => {
   test('Returns false for insuccessful domain match in url parameter', () => {
     expect(isValidDomain('www.google.com')).toBe(false)
     expect(isValidDomain('http://www.google.com')).toBe(false)
+    expect(isValidDomain('http://www.google.pt', true)).toBe(false)
     expect(isValidDomain('http://www.google.com/this/is/a/path')).toBe(false)
     expect(
       isValidDomain('http://www.google.pt.com/this/is/a/path/?with=para.meter')
