@@ -2,11 +2,6 @@ import 'core-js/modules/es6.array.find'
 import HOLIDAYS from '../helpers/holidays'
 
 /**
- * The following calculations are based on the Gauss formula
- *
- */
-
-/**
  * calculate the X value for the easter formula
  * @param {number} year
  */
@@ -43,6 +38,13 @@ function calculateXY(year) {
   }
 }
 
+/**
+ * This function is an implementation of the gaussian formula to calculate Easter
+ * https://math.stackexchange.com/questions/896954/decoding-gauss-easter-algorithm
+ * @param {number} year
+ * @param {number} x
+ * @param {number} y
+ */
 function calculateEaster(year, x, y) {
   const a = year % 19
   const b = year % 4
@@ -67,6 +69,12 @@ function calculateEaster(year, x, y) {
   return new Date(year, month - 1, day)
 }
 
+/**
+ * Calculates the other holidays that depend on Easter to be known, based on
+ * how many days have passed or are to come after/before Easter.
+ * @param {number} easter
+ * @param {number} daysFromEaster
+ */
 function calculateHolidayFromEaster(easter, daysFromEaster) {
   const newDate = new Date(easter)
   newDate.setDate(easter.getDate() + daysFromEaster)
@@ -116,7 +124,8 @@ function checkDateValidity(date) {
 }
 
 /**
- *
+ * Validates a date as to either it's a national portuguese holiday or not. Includes
+ * mobile holidays calculated based on the argument date's year.
  * @param {Date} date
  * @param {Boolean} showHoliday
  */
