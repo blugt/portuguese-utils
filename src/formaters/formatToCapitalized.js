@@ -14,6 +14,14 @@ function isWordUpperCase(word) {
   return true
 }
 
+/**
+ * Formats the given text string to capitalize each word only if the given
+ * word has it's characters all in uppercase else it leaves the word untouched.
+ * Ex. 'ASDFG asdFg' is formatted to 'Asdfg asdFg'.
+ * @param {string} text - the string to be formatted
+ * @throws {TypeError} if text parameter is not of type string
+ * @returns {string}
+ */
 export default function formatToCapitalized(text) {
   if (typeof text != 'string')
     throw TypeError('Argument text is not of type string')
